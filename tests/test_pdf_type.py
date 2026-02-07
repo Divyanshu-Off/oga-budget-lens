@@ -11,3 +11,8 @@ def test_kenya_budget_is_digital():
 def test_south_africa_budget_is_digital():
     result = detect_pdf_type("data/samples/south_africa_budget_2025_overview.pdf")
     assert result["pdf_type"] == "digital"
+
+
+def test_scanned_budget_pdf_is_detected():
+    result = detect_pdf_type("data/samples/scanned_budget.pdf")
+    assert result["pdf_type"] == "scanned"
