@@ -15,7 +15,12 @@ def detect_pdf_type(path: str, max_pages: int = 5) -> dict:
             text = page.get_text().strip()
             pages_checked += 1
 
-            if len(text) > 50:  # threshold to avoid noise 
+            has_text = (
+                len(text.split()) > 10
+                and any(c.isalpha() for c in text)
+            )
+
+            if has_text:
                 pages_with_text += 1
 
     if pages_checked == 0:
